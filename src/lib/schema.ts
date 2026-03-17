@@ -96,7 +96,7 @@ export function breadcrumbSchema(
       "@type": "ListItem",
       position: index + 1,
       name: item.name,
-      item: `${siteConfig.url}${item.href}`,
+      item: `${siteConfig.url}${item.href.endsWith('/') ? item.href : item.href + '/'}`,
     })),
   };
 }

@@ -84,7 +84,7 @@ function ServicePage({ slug }: { slug: string }) {
         data={serviceSchema(
           service.name,
           service.description,
-          `${siteConfig.url}/${slug}`
+          `${siteConfig.url}/${slug}/`
         )}
       />
       {service.faq.length > 0 && <JsonLd data={faqSchema(service.faq)} />}
@@ -187,7 +187,7 @@ function LocationPage({ slug }: { slug: string }) {
         data={serviceSchema(
           `${location.serviceName} — ${location.city}`,
           location.metaDescription,
-          `${siteConfig.url}/${slug}`
+          `${siteConfig.url}/${slug}/`
         )}
       />
       {location.localFaq.length > 0 && (

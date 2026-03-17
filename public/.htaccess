@@ -3,12 +3,9 @@
 
 RewriteEngine On
 
-# Force HTTPS
-RewriteCond %{HTTPS} off
-RewriteRule ^(.*)$ https://%{HTTP_HOST}%{REQUEST_URI} [L,R=301]
-
-# Remove www (canonical: czarkom.pl without www)
-RewriteCond %{HTTP_HOST} ^www\.czarkom\.pl$ [NC]
+# Force HTTPS + remove www in one hop (canonical: https://czarkom.pl)
+RewriteCond %{HTTPS} off [OR]
+RewriteCond %{HTTP_HOST} ^www\. [NC]
 RewriteRule ^(.*)$ https://czarkom.pl/$1 [L,R=301]
 
 # Security headers

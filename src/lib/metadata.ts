@@ -14,7 +14,7 @@ export function generatePageMetadata({
   path,
   noIndex,
 }: MetadataParams): Metadata {
-  const url = `${siteConfig.url}${path}`;
+  const url = `${siteConfig.url}${path.endsWith('/') ? path : path + '/'}`;
 
   return {
     title,
