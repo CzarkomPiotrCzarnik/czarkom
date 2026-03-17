@@ -157,7 +157,7 @@ export function Header() {
 
       {/* Mobile menu */}
       {mobileOpen && (
-        <div className="lg:hidden fixed inset-x-0 top-[calc(theme(spacing.16)+2.25rem)] bottom-0 bg-dark-950/98 backdrop-blur-md z-40 overflow-y-auto md:top-[calc(theme(spacing.16)+theme(spacing.10))]">
+        <div className="lg:hidden bg-dark-950 border-t border-dark-800 max-h-[calc(100vh-8rem)] overflow-y-auto">
           <Container className="py-4">
             <nav className="space-y-1">
               {mainNav.map((item) => (
@@ -218,7 +218,7 @@ export function Header() {
             </nav>
 
             {/* Mobile CTA */}
-            <div className="mt-6 space-y-3 px-4">
+            <div className="mt-6 space-y-3 px-4 pb-4">
               <Link
                 href="/kontakt"
                 onClick={() => setMobileOpen(false)}
