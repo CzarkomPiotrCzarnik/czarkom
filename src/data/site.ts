@@ -4,13 +4,13 @@ export const siteConfig = {
   description:
     "Elektryk, przeglądy elektryczne, monitoring CCTV, automatyka i sieci — Rzeszów, Krosno, Jasło. Instalacje NN/SN, pomiary, protokoły, smart home, BMS, Wi-Fi, LAN.",
   url: "https://czarkom.pl",
-  phone: "+48 693 302 788", // TODO: uzupełnić
-  phoneRaw: "+48693302788",
+  phone: "+48 781 291 640", // TODO: uzupełnić
+  phoneRaw: "+48781291640",
   email: "firma@czarkom.pl", // TODO: uzupełnić
   address: {
     street: "", // TODO: uzupełnić
     city: "Krosno",
-    zip: "", // TODO: uzupełnić
+    zip: "38-400", // TODO: uzupełnić
     region: "podkarpackie",
     country: "PL",
   },
