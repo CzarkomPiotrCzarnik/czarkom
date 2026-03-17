@@ -35,3 +35,6 @@ next-env.d.ts
 
 out/
 .deploy.lftp
+
+# Dane SMTP – uzupełniaj ręcznie na serwerze, nie commituj
+public/contact-config.php
