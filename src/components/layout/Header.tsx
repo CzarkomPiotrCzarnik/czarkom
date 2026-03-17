@@ -11,6 +11,11 @@ import { Button } from "@/components/ui/Button";
 export function Header() {
   const [mobileOpen, setMobileOpen] = useState(false);
   const [openDropdown, setOpenDropdown] = useState<string | null>(null);
+  const [mobileDropdown, setMobileDropdown] = useState<string | null>(null);
+
+  const toggleMobileDropdown = (href: string) => {
+    setMobileDropdown(mobileDropdown === href ? null : href);
+  };
 
   return (
     <header className="sticky top-0 z-50 bg-dark-950/95 backdrop-blur-sm border-b border-dark-800">
@@ -32,6 +37,21 @@ export function Header() {
               {siteConfig.phone}
             </a>
           </div>
+        </Container>
+      </div>
+
+      {/* Mobile top bar - phone */}
+      <div className="md:hidden bg-primary-600 py-2">
+        <Container>
+          <a
+            href={`tel:${siteConfig.phoneRaw}`}
+            className="flex items-center justify-center gap-2 text-white text-sm font-semibold"
+          >
+            <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" strokeWidth={2} stroke="currentColor">
+              <path strokeLinecap="round" strokeLinejoin="round" d="M2.25 6.75c0 8.284 6.716 15 15 15h2.25a2.25 2.25 0 002.25-2.25v-1.372c0-.516-.351-.966-.852-1.091l-4.423-1.106c-.44-.11-.902.055-1.173.417l-.97 1.293c-.282.376-.769.542-1.21.38a12.035 12.035 0 01-7.143-7.143c-.162-.441.004-.928.38-1.21l1.293-.97c.363-.271.527-.734.417-1.173L6.963 3.102a1.125 1.125 0 00-1.091-.852H4.5A2.25 2.25 0 002.25 4.5v2.25z" />
+            </svg>
+            Zadzwoń: {siteConfig.phone}
+          </a>
         </Container>
       </div>
 
@@ -137,40 +157,78 @@ export function Header() {
 
       {/* Mobile menu */}
       {mobileOpen && (
-        <div className="lg:hidden bg-dark-900 border-t border-dark-800">
-          <Container className="py-4 space-y-1">
-            {mainNav.map((item) => (
-              <div key={item.href}>
-                <Link
-                  href={item.href}
-                  onClick={() => setMobileOpen(false)}
-                  className="block px-4 py-3 text-dark-200 hover:text-white hover:bg-dark-800 rounded-lg transition-colors"
-                >
-                  {item.label}
-                </Link>
-                {item.children && (
-                  <div className="pl-4">
-                    {item.children.map((child) => (
-                      <Link
-                        key={child.href}
-                        href={child.href}
-                        onClick={() => setMobileOpen(false)}
-                        className="block px-4 py-2 text-sm text-dark-400 hover:text-white hover:bg-dark-800 rounded-lg transition-colors"
-                      >
-                        {child.label}
-                      </Link>
-                    ))}
-                  </div>
-                )}
-              </div>
-            ))}
-            <div className="pt-4 px-4">
-              <a
-                href={`tel:${siteConfig.phoneRaw}`}
-                className="block text-center py-3 bg-primary-600 hover:bg-primary-700 text-white font-semibold rounded-lg transition-colors"
+        <div className="lg:hidden fixed inset-x-0 top-[calc(theme(spacing.16)+2.25rem)] bottom-0 bg-dark-950/98 backdrop-blur-md z-40 overflow-y-auto md:top-[calc(theme(spacing.16)+theme(spacing.10))]">
+          <Container className="py-4">
+            <nav className="space-y-1">
+              {mainNav.map((item) => (
+                <div key={item.href} className="border-b border-dark-800/50 last:border-0">
+                  {item.children ? (
+                    <>
+                      <div className="flex items-center">
+                        <Link
+                          href={item.href}
+                          onClick={() => setMobileOpen(false)}
+                          className="flex-1 px-4 py-3.5 text-base font-medium text-dark-100 hover:text-white transition-colors"
+                        >
+                          {item.label}
+                        </Link>
+                        <button
+                          type="button"
+                          onClick={() => toggleMobileDropdown(item.href)}
+                          className="px-4 py-3.5 text-dark-400 hover:text-white transition-colors"
+                          aria-label={`Rozwiń ${item.label}`}
+                        >
+                          <svg
+                            className={`w-5 h-5 transition-transform duration-200 ${mobileDropdown === item.href ? "rotate-180" : ""}`}
+                            fill="none"
+                            viewBox="0 0 24 24"
+                            strokeWidth={2}
+                            stroke="currentColor"
+                          >
+                            <path strokeLinecap="round" strokeLinejoin="round" d="M19.5 8.25l-7.5 7.5-7.5-7.5" />
+                          </svg>
+                        </button>
+                      </div>
+                      {mobileDropdown === item.href && (
+                        <div className="pb-2 pl-4 space-y-0.5">
+                          {item.children.map((child) => (
+                            <Link
+                              key={child.href}
+                              href={child.href}
+                              onClick={() => setMobileOpen(false)}
+                              className="block px-4 py-2.5 text-sm text-dark-400 hover:text-primary-400 hover:bg-dark-800/50 rounded-lg transition-colors"
+                            >
+                              {child.label}
+                            </Link>
+                          ))}
+                        </div>
+                      )}
+                    </>
+                  ) : (
+                    <Link
+                      href={item.href}
+                      onClick={() => setMobileOpen(false)}
+                      className="block px-4 py-3.5 text-base font-medium text-dark-100 hover:text-white transition-colors"
+                    >
+                      {item.label}
+                    </Link>
+                  )}
+                </div>
+              ))}
+            </nav>
+
+            {/* Mobile CTA */}
+            <div className="mt-6 space-y-3 px-4">
+              <Link
+                href="/kontakt"
+                onClick={() => setMobileOpen(false)}
+                className="block text-center py-3.5 bg-primary-600 hover:bg-primary-700 text-white font-semibold rounded-xl transition-colors text-base"
               >
-                Zadzwoń: {siteConfig.phone}
-              </a>
+                Zapytaj o wycenę
+              </Link>
+              <p className="text-center text-xs text-dark-500">
+                {siteConfig.hours}
+              </p>
             </div>
           </Container>
         </div>
