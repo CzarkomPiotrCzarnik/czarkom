@@ -8,7 +8,7 @@ export interface ServiceData {
   h1: string;
   heroText: string;
   icon: string;
-  pillar: "elektryka" | "przeglady" | "monitoring" | "automatyka";
+  pillar: "elektryka" | "przeglady" | "monitoring" | "automatyka" | "sieci";
   priority: number;
   sections: {
     problem: string;
@@ -771,8 +771,121 @@ export const services: ServiceData[] = [
           "BMS (Building Management System) to system zarządzania budynkiem, który integruje i kontroluje instalacje techniczne — ogrzewanie, wentylację, oświetlenie, bezpieczeństwo.",
       },
     ],
-    relatedServices: ["automatyka", "smart-home", "integracje"],
+    relatedServices: ["automatyka", "smart-home", "sieci-i-internet"],
     localPages: [],
+  },
+  {
+    slug: "sieci-i-internet",
+    name: "Sieci i internet",
+    shortName: "Sieci",
+    description:
+      "Diagnostyka internetu, poprawa zasięgu Wi-Fi, konfiguracja i rozbudowa sieci LAN/WLAN. Dobór routerów, access pointów, mesh. Doradztwo 5G i smart home.",
+    metaTitle: "Sieci i internet — Wi-Fi, LAN, diagnostyka, doradztwo | Czarkom",
+    metaDescription:
+      "Słaby internet? Problemy z Wi-Fi? Konfiguracja sieci LAN/WLAN, dobór routerów, mesh, access pointy. Diagnostyka i doradztwo — Rzeszów, Krosno, Jasło.",
+    h1: "Sieci i internet — diagnostyka, Wi-Fi, LAN, doradztwo",
+    heroText:
+      "Słaby internet, przerywające Wi-Fi, martwe strefy? Diagnozujemy problemy, konfigurujemy sieci domowe i firmowe, dobieramy sprzęt i doradzamy w zakresie nowoczesnych technologii — 5G, Wi-Fi 6/7, mesh, smart home.",
+    icon: "📶",
+    pillar: "sieci",
+    priority: 5,
+    sections: {
+      problem:
+        "Internet przerywa, Wi-Fi nie dociera na piętro, a praca zdalna, streaming i monitoring wymagają stabilnego połączenia? Większość problemów z internetem to nie wina operatora — to kwestia sieci domowej, routera lub konfiguracji. Pomagamy to naprawić.",
+      scope: [
+        "Diagnostyka słabego internetu i problemów z Wi-Fi",
+        "Poprawa zasięgu Wi-Fi — mesh, access pointy, repeatery",
+        "Konfiguracja i optymalizacja routerów",
+        "Budowa i rozbudowa sieci LAN (okablowanie strukturalne)",
+        "Projektowanie sieci WLAN dla domów i firm",
+        "Dobór sprzętu sieciowego — routery, switche, AP",
+        "Konfiguracja sieci dla monitoringu IP i kamer",
+        "Optymalizacja sieci pod pracę zdalną, gaming, streaming",
+        "Doradztwo technologiczne — 5G, Wi-Fi 6/6E/7, smart home",
+        "Sieci dla IoT i automatyki domowej",
+      ],
+      benefits: [
+        "Stabilny internet w całym domu lub firmie",
+        "Koniec z martwymi strefami Wi-Fi",
+        "Profesjonalny dobór sprzętu — bez przepłacania",
+        "Sieć gotowa na monitoring, smart home i pracę zdalną",
+        "Doradztwo oparte na doświadczeniu, nie na reklamach",
+        "Szybka realizacja — Rzeszów, Krosno, Jasło i okolice",
+      ],
+      audiences: [
+        "Właściciele domów i mieszkań z problemami z Wi-Fi",
+        "Osoby pracujące zdalnie",
+        "Małe i średnie firmy",
+        "Osoby budujące lub remontujące dom",
+        "Użytkownicy monitoringu IP i smart home",
+        "Gracze i streamerzy potrzebujący stabilnego łącza",
+      ],
+      process: [
+        {
+          step: "Diagnoza",
+          description:
+            "Sprawdzamy aktualną sieć, sprzęt, pokrycie Wi-Fi i identyfikujemy problemy.",
+        },
+        {
+          step: "Projekt",
+          description:
+            "Dobieramy rozwiązanie — mesh, AP, okablowanie, konfiguracja routera.",
+        },
+        {
+          step: "Realizacja",
+          description:
+            "Instalujemy sprzęt, konfigurujemy sieć, testujemy pokrycie i prędkość.",
+        },
+        {
+          step: "Przekazanie",
+          description:
+            "Pokazujemy jak działa sieć, tłumaczymy ustawienia, zostawiamy dokumentację.",
+        },
+      ],
+    },
+    faq: [
+      {
+        question: "Dlaczego mam słaby internet, skoro operator mówi, że u niego jest OK?",
+        answer:
+          "Najczęściej problem leży w sieci domowej — router, jego położenie, konfiguracja lub ograniczenia Wi-Fi. Diagnozujemy to i naprawiamy.",
+      },
+      {
+        question: "Jak poprawić zasięg Wi-Fi na piętrze?",
+        answer:
+          "Zależy od budynku — czasem wystarczy zmiana kanału lub położenia routera, często najlepszym rozwiązaniem jest mesh lub access point podłączony kablem.",
+      },
+      {
+        question: "Mesh czy access point — co lepsze?",
+        answer:
+          "Mesh jest prostszy w konfiguracji, access pointy dają więcej kontroli. Doradzamy na podstawie konkretnej sytuacji — wielkości domu, liczby urządzeń i wymagań.",
+      },
+      {
+        question: "Czy potrzebuję okablowania LAN, skoro mam Wi-Fi?",
+        answer:
+          "Wi-Fi jest wygodne, ale kabel daje stabilność. Dla monitoringu, pracy zdalnej i gamingu LAN to najlepsza opcja. Często łączymy oba rozwiązania.",
+      },
+      {
+        question: "Czy 5G zastąpi światłowód w domu?",
+        answer:
+          "5G to dobra alternatywa tam, gdzie nie ma światłowodu, ale w domach z wieloma urządzeniami stałe łącze i dobrze zaprojektowana sieć dają większą stabilność.",
+      },
+      {
+        question: "Co daje Wi-Fi 6 lub Wi-Fi 7?",
+        answer:
+          "Nowsze standardy Wi-Fi obsługują więcej urządzeń jednocześnie, oferują mniejsze opóźnienia i lepszą wydajność. Warto rozważyć przy nowym sprzęcie.",
+      },
+      {
+        question: "Ile kosztuje poprawa sieci w domu?",
+        answer:
+          "Koszt zależy od zakresu — od konfiguracji routera (niska cena) po projekt sieci z okablowaniem i wieloma AP. Wycenę przygotujemy po rozmowie.",
+      },
+    ],
+    relatedServices: ["monitoring-cctv", "smart-home", "automatyka"],
+    localPages: [
+      "sieci-i-internet-rzeszow",
+      "sieci-i-internet-krosno",
+      "sieci-i-internet-jaslo",
+    ],
   },
 ];
 

@@ -190,6 +190,28 @@ const localServiceConfigs: LocalServiceConfig[] = [
     }),
   },
   {
+    serviceSlug: "sieci-i-internet",
+    serviceName: "Sieci i internet",
+    slugPrefix: "sieci-i-internet",
+    generateContent: (city) => ({
+      metaTitle: `Sieci i internet ${city} — Wi-Fi, LAN, diagnostyka | Czarkom`,
+      metaDescription: `Słaby internet w ${city === "Rzeszów" ? "Rzeszowie" : city === "Krosno" ? "Krośnie" : "Jaśle"}? Diagnostyka Wi-Fi, konfiguracja sieci LAN/WLAN, mesh, access pointy. Czarkom — zadzwoń!`,
+      h1: `Sieci i internet ${city} — diagnostyka, Wi-Fi, LAN`,
+      heroText: `Problemy z internetem lub Wi-Fi w ${city === "Rzeszów" ? "Rzeszowie" : city === "Krosno" ? "Krośnie" : "Jaśle"}? Diagnozujemy, projektujemy i konfigurujemy sieci domowe i firmowe. Dobieramy sprzęt i rozwiązania dopasowane do Twoich potrzeb.`,
+      introText: `Działamy na terenie ${city === "Rzeszów" ? "Rzeszowa" : city === "Krosno" ? "Krosna" : "Jasła"} i okolic. Pomagamy z problemami z internetem — od diagnostyki przez konfigurację routera, po budowę sieci LAN i dobór mesh/access pointów. Pracujemy z domami, mieszkaniami i małymi firmami.`,
+      localFaq: [
+        {
+          question: `Czy naprawiacie problemy z Wi-Fi w ${city === "Rzeszów" ? "Rzeszowie" : city === "Krosno" ? "Krośnie" : "Jaśle"}?`,
+          answer: `Tak — diagnozujemy przyczyny słabego zasięgu Wi-Fi i dobieramy rozwiązanie: zmiana konfiguracji, mesh, access point lub okablowanie. Dojeżdżamy na teren ${city === "Rzeszów" ? "Rzeszowa" : city === "Krosno" ? "Krosna" : "Jasła"} i okolic.`,
+        },
+        {
+          question: `Ile kosztuje poprawa sieci w domu w ${city === "Rzeszów" ? "Rzeszowie" : city === "Krosno" ? "Krośnie" : "Jaśle"}?`,
+          answer: `Koszt zależy od zakresu — od konfiguracji routera po rozbudowę sieci z okablowaniem. Skontaktuj się — przygotujemy wycenę.`,
+        },
+      ],
+    }),
+  },
+  {
     serviceSlug: "automatyka",
     serviceName: "Automatyka",
     slugPrefix: "automatyka",

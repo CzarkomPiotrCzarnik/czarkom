@@ -2,11 +2,11 @@ export const siteConfig = {
   name: "Czarkom",
   fullName: "Czarkom — Piotr Czarnik",
   description:
-    "Elektryk, przeglądy elektryczne, monitoring CCTV i automatyka — Rzeszów, Krosno, Jasło. Instalacje NN i SN, pomiary, protokoły, smart home, BMS.",
+    "Elektryk, przeglądy elektryczne, monitoring CCTV, automatyka i sieci — Rzeszów, Krosno, Jasło. Instalacje NN/SN, pomiary, protokoły, smart home, BMS, Wi-Fi, LAN.",
   url: "https://czarkom.pl",
-  phone: "+48 000 000 000", // TODO: uzupełnić
-  phoneRaw: "+48000000000",
-  email: "kontakt@czarkom.pl", // TODO: uzupełnić
+  phone: "+48 693 302 788", // TODO: uzupełnić
+  phoneRaw: "+48693302788",
+  email: "firma@czarkom.pl", // TODO: uzupełnić
   address: {
     street: "", // TODO: uzupełnić
     city: "Krosno",
@@ -14,7 +14,7 @@ export const siteConfig = {
     region: "podkarpackie",
     country: "PL",
   },
-  hours: "Pon–Pt: 7:00–17:00, Sob: po uzgodnieniu",
+  hours: "Codziennie 7:00–17:00 · Również weekendy",
   areas: ["Rzeszów", "Krosno", "Jasło", "Jedlicze", "okolice"],
   social: {
     facebook: "", // TODO: uzupełnić

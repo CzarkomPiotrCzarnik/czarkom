@@ -5,7 +5,6 @@ export interface NavItem {
 }
 
 export const mainNav: NavItem[] = [
-  { label: "Strona główna", href: "/" },
   {
     label: "Elektryk",
     href: "/elektryk",
@@ -42,6 +41,16 @@ export const mainNav: NavItem[] = [
       { label: "BMS", href: "/bms" },
     ],
   },
+  {
+    label: "Sieci i internet",
+    href: "/sieci-i-internet",
+    children: [
+      { label: "Sieci Rzeszów", href: "/sieci-i-internet-rzeszow" },
+      { label: "Sieci Krosno", href: "/sieci-i-internet-krosno" },
+      { label: "Sieci Jasło", href: "/sieci-i-internet-jaslo" },
+    ],
+  },
+  { label: "Baza wiedzy", href: "/baza-wiedzy" },
   { label: "FAQ", href: "/faq" },
   { label: "Kontakt", href: "/kontakt" },
 ];
@@ -56,6 +65,7 @@ export const footerServices: NavItem[] = [
   { label: "Automatyka", href: "/automatyka" },
   { label: "Smart Home", href: "/smart-home" },
   { label: "BMS", href: "/bms" },
+  { label: "Sieci i internet", href: "/sieci-i-internet" },
 ];
 
 export const footerLocations: NavItem[] = [
@@ -68,10 +78,14 @@ export const footerLocations: NavItem[] = [
   { label: "Monitoring Rzeszów", href: "/monitoring-rzeszow" },
   { label: "Monitoring Krosno", href: "/monitoring-krosno" },
   { label: "Monitoring Jasło", href: "/monitoring-jaslo" },
+  { label: "Sieci Rzeszów", href: "/sieci-i-internet-rzeszow" },
+  { label: "Sieci Krosno", href: "/sieci-i-internet-krosno" },
+  { label: "Sieci Jasło", href: "/sieci-i-internet-jaslo" },
 ];
 
 export const footerLinks: NavItem[] = [
   { label: "O firmie", href: "/o-firmie" },
+  { label: "Baza wiedzy", href: "/baza-wiedzy" },
   { label: "Kontakt", href: "/kontakt" },
   { label: "FAQ", href: "/faq" },
 ];

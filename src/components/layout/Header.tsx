@@ -57,7 +57,7 @@ export function Header() {
           </Link>
 
           {/* Desktop menu */}
-          <div className="hidden lg:flex items-center gap-1">
+          <div className="hidden lg:flex items-center gap-0">
             {mainNav.map((item) => (
               <div
                 key={item.href}
@@ -69,7 +69,7 @@ export function Header() {
               >
                 <Link
                   href={item.href}
-                  className="px-3 py-2 text-sm font-medium text-dark-300 hover:text-white transition-colors rounded-lg hover:bg-dark-800/50"
+                  className="px-2.5 py-2 text-[13px] font-medium text-dark-300 hover:text-white transition-colors rounded-lg hover:bg-dark-800/50 whitespace-nowrap"
                 >
                   {item.label}
                   {item.children && (

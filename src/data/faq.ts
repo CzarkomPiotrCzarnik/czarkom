@@ -89,6 +89,56 @@ export const generalFaq: FaqItem[] = [
       "Tak — wiele rozwiązań automatyki budynkowej można wdrożyć bez rozbudowy instalacji, korzystając z technologii bezprzewodowych.",
     category: "automatyka",
   },
+
+  // ──── FAQ problemowe — frazy wpisywane w Google ────
+  {
+    question: "Dlaczego wybija bezpiecznik i co to może oznaczać?",
+    answer:
+      "Bezpiecznik (wyłącznik nadprądowy) zadziałał, bo wykrył przeciążenie lub zwarcie w obwodzie. Najczęstsze przyczyny: za dużo urządzeń na jednym obwodzie, uszkodzone urządzenie, wilgoć. Odłącz urządzenia i spróbuj załączyć bezpiecznik. Jeśli ciągle wybija — wezwij elektryka.",
+    category: "elektryka",
+  },
+  {
+    question: "Dlaczego wybija różnicówka?",
+    answer:
+      "Różnicówka (RCD) chroni przed porażeniem prądem. Wybija, gdy wykryje upływ prądu — np. z uszkodzonego urządzenia, wilgotnego gniazdka lub starej izolacji. Nigdy nie blokuj różnicówki — znajdź przyczynę upływu. Przyjeżdżamy z diagnostyką na terenie Krosna, Rzeszowa i Jasła.",
+    category: "elektryka",
+  },
+  {
+    question: "Brak prądu w gniazdku — co zrobić?",
+    answer:
+      "Sprawdź bezpiecznik i różnicówkę w rozdzielni. Przetestuj gniazdko innym urządzeniem. Jeśli bezpiecznik ciągle wypada lub gniazdko jest ciepłe/iskrzy — wezwij elektryka. Nie grzeb w gniazdku sam.",
+    category: "elektryka",
+  },
+  {
+    question: "Internet nie działa — co zrobić?",
+    answer:
+      "Zrestartuj router (odłącz zasilanie na 30 sek.). Sprawdź na innym urządzeniu. Podłącz komputer kablem LAN do routera — jeśli kablem działa, problem jest w Wi-Fi. Jeśli kablem też nie — dzwoń do operatora. Pomagamy z diagnostyką sieci na Podkarpaciu.",
+    category: "sieci",
+  },
+  {
+    question: "Słaby zasięg Wi-Fi w domu — jak poprawić?",
+    answer:
+      "Przenieś router centralnie i wysoko. Włącz pasmo 5 GHz. Zmień kanał Wi-Fi. Jeśli to nie wystarczy — rozważ access point (na kablu LAN) lub system mesh. Instalujemy i konfigurujemy na terenie Krosna, Rzeszowa i Jasła.",
+    category: "sieci",
+  },
+  {
+    question: "Kamera nie działa w aplikacji — co sprawdzić?",
+    answer:
+      "Sprawdź: czy rejestrator ma internet (kabel LAN do routera), czy P2P/chmura jest włączona, czy aplikacja jest aktualna. Zrestartuj router i rejestrator. Jeśli nie pomaga — konieczna diagnostyka. Pomagamy zdalnie i na miejscu.",
+    category: "monitoring",
+  },
+  {
+    question: "Kamera jest offline — jak przywrócić podgląd?",
+    answer:
+      "Status offline oznacza, że kamera/rejestrator nie ma połączenia z internetem. Zrestartuj router i rejestrator. Sprawdź kabel LAN. Jeśli kamera Wi-Fi — sprawdź zasięg i czy hasło sieci się nie zmieniło.",
+    category: "monitoring",
+  },
+  {
+    question: "Czy dojedziesz do mnie w nagłej awarii?",
+    answer:
+      "Tak — awarie elektryczne traktujemy priorytetowo. Na terenie Krosna, Rzeszowa, Jasła i okolic często przyjeżdżamy tego samego dnia. Zadzwoń — ustalimy najszybszy termin.",
+    category: "ogólne",
+  },
 ];
 
 export const homepageFaq: FaqItem[] = generalFaq.filter((f) =>

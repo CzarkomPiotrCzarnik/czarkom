@@ -39,7 +39,7 @@ export function localBusinessSchema() {
       addressRegion: siteConfig.address.region,
       addressCountry: siteConfig.address.country,
     },
-    openingHours: "Mo-Fr 07:00-17:00",
+    openingHours: "Mo-Su 07:00-17:00",
     areaServed: siteConfig.areas.map((area) => ({
       "@type": "City",
       name: area,
