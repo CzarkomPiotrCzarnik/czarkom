@@ -46,6 +46,7 @@ export function Header() {
               width={40}
               height={40}
               className="w-10 h-10"
+              unoptimized
             />
             <Image
               src="/images/logo/ck-text.svg"
@@ -53,6 +54,7 @@ export function Header() {
               width={120}
               height={30}
               className="h-7 w-auto hidden sm:block"
+              unoptimized
             />
           </Link>
 

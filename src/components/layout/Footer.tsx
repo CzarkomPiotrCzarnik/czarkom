@@ -20,6 +20,7 @@ export function Footer() {
                 width={36}
                 height={36}
                 className="w-9 h-9"
+                unoptimized
               />
               <Image
                 src="/images/logo/ck-text.svg"
@@ -27,6 +28,7 @@ export function Footer() {
                 width={100}
                 height={25}
                 className="h-6 w-auto"
+                unoptimized
               />
             </Link>
             <p className="text-dark-400 text-sm leading-relaxed mb-4">
