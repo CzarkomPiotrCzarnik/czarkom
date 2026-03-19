@@ -43,3 +43,4 @@ jobs:
           dangerous-clean-slate: false
           exclude: |
             contact-config.php
+            contact.php
