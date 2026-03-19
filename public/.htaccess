@@ -12,6 +12,22 @@ RewriteRule ^(.*)$ https://czarkom.pl/$1 [L,R=301]
 RewriteRule ^home\.php$ / [L,R=301]
 RewriteRule ^home$ / [L,R=301]
 
+# Explicit trailing-slash redirects for main pages (prevents GSC redirect errors)
+RewriteRule ^elektryk$ /elektryk/ [L,R=301]
+RewriteRule ^instalacje-elektryczne$ /instalacje-elektryczne/ [L,R=301]
+RewriteRule ^przeglady-elektryczne$ /przeglady-elektryczne/ [L,R=301]
+RewriteRule ^pomiary-elektryczne$ /pomiary-elektryczne/ [L,R=301]
+RewriteRule ^protokoly-elektryczne$ /protokoly-elektryczne/ [L,R=301]
+RewriteRule ^monitoring-cctv$ /monitoring-cctv/ [L,R=301]
+RewriteRule ^automatyka$ /automatyka/ [L,R=301]
+RewriteRule ^smart-home$ /smart-home/ [L,R=301]
+RewriteRule ^bms$ /bms/ [L,R=301]
+RewriteRule ^sieci-i-internet$ /sieci-i-internet/ [L,R=301]
+RewriteRule ^baza-wiedzy$ /baza-wiedzy/ [L,R=301]
+RewriteRule ^faq$ /faq/ [L,R=301]
+RewriteRule ^kontakt$ /kontakt/ [L,R=301]
+RewriteRule ^o-firmie$ /o-firmie/ [L,R=301]
+
 # Security headers
 <IfModule mod_headers.c>
   Header set X-Content-Type-Options "nosniff"
