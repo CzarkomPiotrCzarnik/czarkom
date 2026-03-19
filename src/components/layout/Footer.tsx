@@ -41,6 +41,7 @@ export function Footer() {
               >
                 {siteConfig.phone}
               </a>
+              <span className="text-dark-600 select-none" aria-hidden="true"> · </span>
               <a
                 href={`mailto:${siteConfig.email}`}
                 className="block text-dark-400 hover:text-white transition-colors"
