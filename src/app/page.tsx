@@ -115,10 +115,10 @@ export default function HomePage() {
                 ))}
               </ul>
               <div className="flex flex-col sm:flex-row gap-3">
-                <Button href="/przeglady-elektryczne" size="lg">
+                <Button href="/przeglady-elektryczne/" size="lg">
                   Umów przegląd
                 </Button>
-                <Button href="/protokoly-elektryczne" variant="outline">
+                <Button href="/protokoly-elektryczne/" variant="outline">
                   Potrzebuję protokół
                 </Button>
               </div>

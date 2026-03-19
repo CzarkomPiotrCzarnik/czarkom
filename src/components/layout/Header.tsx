@@ -130,7 +130,7 @@ export function Header() {
 
           {/* CTA */}
           <div className="hidden lg:flex items-center gap-3">
-            <Button href="/kontakt" size="sm">
+            <Button href="/kontakt/" size="sm">
               Zapytaj o wycenę
             </Button>
           </div>
@@ -220,7 +220,7 @@ export function Header() {
             {/* Mobile CTA */}
             <div className="mt-6 space-y-3 px-4 pb-4">
               <Link
-                href="/kontakt"
+                href="/kontakt/"
                 onClick={() => setMobileOpen(false)}
                 className="block text-center py-3.5 bg-primary-600 hover:bg-primary-700 text-white font-semibold rounded-xl transition-colors text-base"
               >

@@ -37,7 +37,7 @@ export function HeroSection({
             <Button href={ctaHref} size="lg">
               {ctaText}
             </Button>
-            <Button href="/kontakt" variant="outline" size="lg">
+            <Button href="/kontakt/" variant="outline" size="lg">
               Umów przegląd
             </Button>
           </div>
