@@ -1,0 +1,4 @@
+---
+deployment:
+  tasks:
+    - /bin/cp -rf /home/petrasky/repositories/czarkom/. /home/petrasky/public_html/czarkom/www/

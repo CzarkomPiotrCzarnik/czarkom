@@ -1,0 +1,4 @@
+User-Agent: *
+Allow: /
+
+Sitemap: https://czarkom.pl/sitemap.xml
