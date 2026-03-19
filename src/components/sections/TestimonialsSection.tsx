@@ -40,14 +40,24 @@ export function TestimonialsSection() {
           ))}
         </div>
 
-        {/* Google review CTA */}
-        <div className="mt-12 text-center">
-          <p className="text-dark-400 text-sm mb-4">Korzystałeś z naszych usług? Będziemy wdzięczni za opinię!</p>
+        {/* Google review CTA — baner */}
+        <div className="mt-12 rounded-2xl bg-gradient-to-br from-dark-900 to-dark-800 border border-dark-700 p-8 md:p-10 flex flex-col md:flex-row items-center justify-between gap-6">
+          <div>
+            <div className="flex items-center gap-1 mb-3">
+              {[...Array(5)].map((_, j) => (
+                <svg key={j} className="w-5 h-5 text-yellow-400" fill="currentColor" viewBox="0 0 20 20">
+                  <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
+                </svg>
+              ))}
+            </div>
+            <h3 className="text-xl font-bold text-white mb-1">Korzystałeś z naszych usług?</h3>
+            <p className="text-dark-400 text-sm">Twoja opinia w Google pomaga innym klientom i wspiera nasz rozwój. Zajmie to dosłownie 1 minutę.</p>
+          </div>
           <a
             href={siteConfig.googleReviewUrl}
             target="_blank"
             rel="noopener noreferrer"
-            className="inline-flex items-center gap-2 px-6 py-3 bg-white hover:bg-gray-100 text-gray-800 font-semibold rounded-xl transition-colors text-sm shadow"
+            className="shrink-0 inline-flex items-center gap-3 px-7 py-4 bg-white hover:bg-gray-50 text-gray-800 font-bold rounded-xl transition-colors shadow-lg text-sm whitespace-nowrap"
           >
             <svg className="w-5 h-5" viewBox="0 0 24 24" aria-hidden="true">
               <path fill="#4285F4" d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z"/>
