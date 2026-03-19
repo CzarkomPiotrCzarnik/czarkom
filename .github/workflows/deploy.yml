@@ -31,16 +31,15 @@ jobs:
       - name: Build static site
         run: npm run build
 
-      - name: Deploy via FTP
-        uses: SamKirkland/FTP-Deploy-Action@v4.3.5
-        with:
-          server: ${{ secrets.FTP_HOST }}
-          username: ${{ secrets.FTP_USERNAME }}
-          password: ${{ secrets.FTP_PASSWORD }}
-          local-dir: ./out/
-          server-dir: /public_html/czarkom/www/
-          protocol: ftps
-          dangerous-clean-slate: false
-          exclude: |
-            contact-config.php
-            contact.php
+      - name: Deploy to deploy branch
+        run: |
+          cd out
+          printf '%s\n' '---' 'deployment:' '  tasks:' '    - export DEPLOYPATH=/home/petrasky/public_html/czarkom/www/' '    - /bin/cp -r * "$DEPLOYPATH"' '    - /bin/cp .htaccess "$DEPLOYPATH" 2>/dev/null || true' > .cpanel.yml
+          git init
+          git config user.name "github-actions"
+          git config user.email "actions@github.com"
+          git checkout -b deploy
+          git add -A
+          git commit -m "deploy: $(date -u '+%Y-%m-%d %H:%M:%S UTC')"
+          git remote add origin https://x-access-token:${{ secrets.GITHUB_TOKEN }}@github.com/${{ github.repository }}.git
+          git push -f origin deploy
