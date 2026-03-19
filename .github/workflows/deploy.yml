@@ -36,13 +36,23 @@ jobs:
 
       - name: Deploy to deploy branch
         run: |
-          cd out
-          printf '%s\n' '---' 'deployment:' '  tasks:' '    - /bin/cp -rf /home/petrasky/repositories/czarkom/. /home/petrasky/public_html/czarkom/www/' > .cpanel.yml
-          git init
           git config user.name "github-actions"
           git config user.email "actions@github.com"
-          git checkout -b deploy
+          REMOTE="https://x-access-token:${{ secrets.GITHUB_TOKEN }}@github.com/${{ github.repository }}.git"
+          
+          # Klonuj deploy branch (albo utwórz jeśli nie istnieje)
+          git clone --single-branch --branch deploy "$REMOTE" deploy-dir 2>/dev/null || {
+            mkdir deploy-dir && cd deploy-dir && git init && git checkout -b deploy && git remote add origin "$REMOTE" && cd ..
+          }
+          
+          # Wyczyść starą zawartość i wrzuć nowy build
+          cd deploy-dir
+          git config user.name "github-actions"
+          git config user.email "actions@github.com"
+          find . -maxdepth 1 ! -name '.git' ! -name '.' -exec rm -rf {} +
+          cp -r ../out/. .
+          printf '%s\n' '---' 'deployment:' '  tasks:' '    - /bin/cp -rf /home/petrasky/repositories/czarkom/. /home/petrasky/public_html/czarkom/www/' > .cpanel.yml
+          
           git add -A
-          git commit -m "deploy: $(date -u '+%Y-%m-%d %H:%M:%S UTC')"
-          git remote add origin https://x-access-token:${{ secrets.GITHUB_TOKEN }}@github.com/${{ github.repository }}.git
-          git push -f origin deploy
+          git commit -m "deploy: $(date -u '+%Y-%m-%d %H:%M:%S UTC')" --allow-empty
+          git push origin deploy
