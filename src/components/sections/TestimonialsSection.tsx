@@ -1,5 +1,6 @@
 import { Container } from "@/components/layout/Container";
 import { SectionHeading } from "@/components/ui/SectionHeading";
+import { ShareReviewButton } from "@/components/ui/ShareReviewButton";
 import { testimonials } from "@/data/testimonials";
 import { siteConfig } from "@/data/site";
 
@@ -41,7 +42,7 @@ export function TestimonialsSection() {
         </div>
 
         {/* Google review CTA — dyskretny */}
-        <div className="mt-10 text-center">
+        <div className="mt-10 flex flex-col sm:flex-row items-center justify-center gap-4">
           <a
             href={siteConfig.googleReviewUrl}
             target="_blank"
@@ -59,6 +60,8 @@ export function TestimonialsSection() {
               <path strokeLinecap="round" strokeLinejoin="round" d="M13.5 4.5L21 12m0 0l-7.5 7.5M21 12H3" />
             </svg>
           </a>
+          <span className="hidden sm:block text-dark-700">|</span>
+          <ShareReviewButton />
         </div>
       </Container>
     </section>

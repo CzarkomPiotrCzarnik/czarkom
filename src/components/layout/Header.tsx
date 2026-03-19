@@ -7,6 +7,7 @@ import { mainNav } from "@/data/navigation";
 import { siteConfig } from "@/data/site";
 import { Container } from "./Container";
 import { Button } from "@/components/ui/Button";
+import { ShareIconButton } from "@/components/ui/ShareIconButton";
 
 export function Header() {
   const [mobileOpen, setMobileOpen] = useState(false);
@@ -51,6 +52,7 @@ export function Header() {
               </svg>
               Oceń nas
             </a>
+            <ShareIconButton />
           </div>
         </Container>
       </div>
@@ -82,6 +84,7 @@ export function Header() {
               </svg>
               Oceń nas
             </a>
+            <ShareIconButton variant="mobile" />
           </div>
         </Container>
       </div>
