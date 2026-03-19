@@ -37,14 +37,14 @@ export function Footer() {
             <div className="space-y-2 text-sm">
               <a
                 href={`tel:${siteConfig.phoneRaw}`}
-                className="block text-primary-400 font-semibold hover:text-primary-300 transition-colors"
+                className="text-primary-400 font-semibold hover:text-primary-300 transition-colors"
               >
                 {siteConfig.phone}
               </a>
-              <span className="text-dark-600 select-none" aria-hidden="true"> · </span>
+              <span className="text-dark-600"> · </span>
               <a
                 href={`mailto:${siteConfig.email}`}
-                className="block text-dark-400 hover:text-white transition-colors"
+                className="text-dark-400 hover:text-white transition-colors"
               >
                 {siteConfig.email}
               </a>
