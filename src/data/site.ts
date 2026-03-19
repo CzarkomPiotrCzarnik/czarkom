@@ -20,6 +20,7 @@ export const siteConfig = {
     facebook: "", // TODO: uzupełnić
     google: "", // TODO: uzupełnić
   },
+  googleReviewUrl: "https://g.page/r/CQg-gchG2sS2EAE/review",
   nip: "", // TODO: uzupełnić
   regon: "", // TODO: uzupełnić
 } as const;
