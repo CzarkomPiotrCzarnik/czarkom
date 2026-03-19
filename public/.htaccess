@@ -1,32 +1,23 @@
 # Czarkom.pl - Apache rewrite rules for Next.js static export
-# Deployed to: public_html/czarkom/www/
+# Canonical URL: https://czarkom.pl/path/ (HTTPS, non-www, trailing slash)
 
 RewriteEngine On
 
-# Force HTTPS + remove www in one hop (canonical: https://czarkom.pl)
+# 1. Force HTTPS + remove www in one hop
 RewriteCond %{HTTPS} off [OR]
 RewriteCond %{HTTP_HOST} ^www\. [NC]
 RewriteRule ^(.*)$ https://czarkom.pl/$1 [L,R=301]
 
-# Legacy URLs from old PHP site
+# 2. Generic trailing-slash redirect for all non-file URLs
+#    (replaces individual per-page rules — covers all current and future pages)
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_URI} !(.*)/$
+RewriteRule ^(.+)$ https://czarkom.pl/$1/ [L,R=301]
+
+# 3. Legacy URLs from old PHP site
+RewriteRule ^index\.php$ / [L,R=301]
 RewriteRule ^home\.php$ / [L,R=301]
 RewriteRule ^home$ / [L,R=301]
-
-# Explicit trailing-slash redirects for main pages (prevents GSC redirect errors)
-RewriteRule ^elektryk$ /elektryk/ [L,R=301]
-RewriteRule ^instalacje-elektryczne$ /instalacje-elektryczne/ [L,R=301]
-RewriteRule ^przeglady-elektryczne$ /przeglady-elektryczne/ [L,R=301]
-RewriteRule ^pomiary-elektryczne$ /pomiary-elektryczne/ [L,R=301]
-RewriteRule ^protokoly-elektryczne$ /protokoly-elektryczne/ [L,R=301]
-RewriteRule ^monitoring-cctv$ /monitoring-cctv/ [L,R=301]
-RewriteRule ^automatyka$ /automatyka/ [L,R=301]
-RewriteRule ^smart-home$ /smart-home/ [L,R=301]
-RewriteRule ^bms$ /bms/ [L,R=301]
-RewriteRule ^sieci-i-internet$ /sieci-i-internet/ [L,R=301]
-RewriteRule ^baza-wiedzy$ /baza-wiedzy/ [L,R=301]
-RewriteRule ^faq$ /faq/ [L,R=301]
-RewriteRule ^kontakt$ /kontakt/ [L,R=301]
-RewriteRule ^o-firmie$ /o-firmie/ [L,R=301]
 
 # Security headers
 <IfModule mod_headers.c>

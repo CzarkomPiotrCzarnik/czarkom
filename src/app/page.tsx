@@ -1,3 +1,4 @@
+import type { Metadata } from "next";
 import { HeroSection } from "@/components/sections/HeroSection";
 import { ServicesGrid } from "@/components/sections/ServicesGrid";
 import { TrustSection } from "@/components/sections/TrustSection";
@@ -10,6 +11,13 @@ import { Button } from "@/components/ui/Button";
 import { homepageFaq } from "@/data/faq";
 import { JsonLd } from "@/components/seo/JsonLd";
 import { faqSchema } from "@/lib/schema";
+import { siteConfig } from "@/data/site";
+
+export const metadata: Metadata = {
+  alternates: {
+    canonical: `${siteConfig.url}/`,
+  },
+};
 
 const mainServices = [
   {
