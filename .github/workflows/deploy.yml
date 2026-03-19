@@ -37,7 +37,7 @@ jobs:
       - name: Deploy to deploy branch
         run: |
           cd out
-          printf '%s\n' '---' 'deployment:' '  tasks:' '    - export DEPLOYPATH=/home/petrasky/public_html/czarkom/www/' '    - /bin/cp -r * "$DEPLOYPATH"' '    - /bin/cp .htaccess "$DEPLOYPATH" 2>/dev/null || true' > .cpanel.yml
+          printf '%s\n' '---' 'deployment:' '  tasks:' '    - /bin/cp -rf /home/petrasky/repositories/czarkom/. /home/petrasky/public_html/czarkom/www/' > .cpanel.yml
           git init
           git config user.name "github-actions"
           git config user.email "actions@github.com"
