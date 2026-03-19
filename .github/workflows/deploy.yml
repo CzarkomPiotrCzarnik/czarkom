@@ -46,24 +46,3 @@ jobs:
           git commit -m "deploy: $(date -u '+%Y-%m-%d %H:%M:%S UTC')"
           git remote add origin https://x-access-token:${{ secrets.GITHUB_TOKEN }}@github.com/${{ github.repository }}.git
           git push -f origin deploy
-
-      - name: Trigger cPanel deployment
-        run: |
-          REPO="/home/${{ secrets.CPANEL_USER }}/repositories/czarkom"
-          AUTH="Authorization: cpanel ${{ secrets.CPANEL_USER }}:${{ secrets.CPANEL_API_TOKEN }}"
-          BASE="https://${{ secrets.CPANEL_HOST }}:2083"
-
-          echo "1) git pull na serwerze..."
-          curl -s -X POST "$BASE/execute/VersionControl/update" \
-            -H "$AUTH" \
-            --data-urlencode "repository_root=$REPO"
-
-          echo "2) czekam 5s..."
-          sleep 5
-
-          echo "3) deploy..."
-          RESULT=$(curl -s -X POST "$BASE/execute/VersionControlDeployment/create" \
-            -H "$AUTH" \
-            --data-urlencode "repository_root=$REPO")
-          echo "$RESULT"
-          echo "$RESULT" | grep -q '"status":1' && echo "Deploy OK" || echo "Deploy FAILED"
