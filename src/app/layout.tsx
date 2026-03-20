@@ -22,9 +22,9 @@ export const metadata: Metadata = {
   description: siteConfig.description,
   icons: {
     icon: [
-      { url: "/favicon.ico", sizes: "48x48" },
+      { url: "/favicon.ico", sizes: "any" },
+      { url: "/icon.svg", type: "image/svg+xml" },
       { url: "/favicon-96x96.png", type: "image/png", sizes: "96x96" },
-      { url: "/icon.svg", type: "image/svg+xml", sizes: "any" },
       { url: "/icon-192x192.png", type: "image/png", sizes: "192x192" },
     ],
     apple: [{ url: "/apple-touch-icon.png", sizes: "180x180" }],
