@@ -3,7 +3,14 @@
 
 RewriteEngine On
 
-# 1. Force HTTPS + remove www in one hop
+# 1a. Force HTTPS + remove www + add trailing slash in one hop (non-file URLs without trailing slash)
+RewriteCond %{HTTPS} off [OR]
+RewriteCond %{HTTP_HOST} ^www\. [NC]
+RewriteCond %{REQUEST_URI} !\.[a-zA-Z0-9]+$
+RewriteCond %{REQUEST_URI} !/$
+RewriteRule ^(.+)$ https://czarkom.pl/$1/ [L,R=301]
+
+# 1b. Force HTTPS + remove www (file URLs or URLs already with trailing slash)
 RewriteCond %{HTTPS} off [OR]
 RewriteCond %{HTTP_HOST} ^www\. [NC]
 RewriteRule ^(.*)$ https://czarkom.pl/$1 [L,R=301]
@@ -14,7 +21,7 @@ RewriteRule ^home\.php$ / [L,R=301]
 RewriteRule ^home$ / [L,R=301]
 
 # 3. Generic trailing-slash redirect for all non-file URLs
-#    (covers all current and future pages)
+#    (covers HTTPS non-www requests missing trailing slash)
 RewriteCond %{REQUEST_FILENAME} !-f
 RewriteCond %{REQUEST_URI} !(.*)/$
 RewriteRule ^(.+)$ https://czarkom.pl/$1/ [L,R=301]
