@@ -23,20 +23,41 @@ export function Header() {
       {/* Top bar */}
       <div className="bg-dark-900 py-2 hidden md:block">
         <Container className="flex justify-between items-center text-sm text-dark-400">
-          <span>{siteConfig.hours}</span>
           <div className="flex items-center gap-4">
+            <a
+              href={`tel:${siteConfig.phoneRaw}`}
+              className="flex items-center gap-1.5 text-primary-400 font-semibold hover:text-primary-300 transition-colors"
+            >
+              <svg className="w-3.5 h-3.5" fill="none" viewBox="0 0 24 24" strokeWidth={2} stroke="currentColor">
+                <path strokeLinecap="round" strokeLinejoin="round" d="M2.25 6.75c0 8.284 6.716 15 15 15h2.25a2.25 2.25 0 002.25-2.25v-1.372c0-.516-.351-.966-.852-1.091l-4.423-1.106c-.44-.11-.902.055-1.173.417l-.97 1.293c-.282.376-.769.542-1.21.38a12.035 12.035 0 01-7.143-7.143c-.162-.441.004-.928.38-1.21l1.293-.97c.363-.271.527-.734.417-1.173L6.963 3.102a1.125 1.125 0 00-1.091-.852H4.5A2.25 2.25 0 002.25 4.5v2.25z" />
+              </svg>
+              {siteConfig.phone}
+            </a>
+            <span className="text-dark-700">|</span>
             <a
               href={`mailto:${siteConfig.email}`}
               className="hover:text-primary-400 transition-colors"
             >
               {siteConfig.email}
             </a>
-            <a
-              href={`tel:${siteConfig.phoneRaw}`}
-              className="text-primary-400 font-semibold hover:text-primary-300 transition-colors"
+          </div>
+          <div className="flex items-center gap-4">
+            <Link
+              href="/partner-hikvision/"
+              className="flex items-center gap-2 px-2.5 py-1 bg-white/5 border border-dark-700 rounded-md hover:border-primary-800/50 transition-colors"
             >
-              {siteConfig.phone}
-            </a>
+              <Image
+                src="/images/partners/hikvision-logo.png"
+                alt="Hikvision"
+                width={84}
+                height={17}
+                className="h-4 w-auto brightness-125"
+                unoptimized
+              />
+              <span className="text-[11px] font-semibold text-dark-200 leading-none">
+                Oficjalny partner
+              </span>
+            </Link>
             <span className="text-dark-700">|</span>
             <a
               href={siteConfig.googleReviewUrl}
@@ -146,7 +167,27 @@ export function Header() {
                 </Link>
 
                 {item.children && openDropdown === item.href && (
-                  <div className="absolute top-full left-0 mt-1 w-56 bg-dark-900 border border-dark-700 rounded-xl shadow-xl py-2 z-50">
+                  <div className="absolute top-full left-0 mt-1 w-64 bg-dark-900 border border-dark-700 rounded-xl shadow-xl py-2 z-50">
+                    {/* Hikvision partner badge inside Monitoring CCTV dropdown */}
+                    {item.href === "/monitoring-cctv/" && (
+                      <Link
+                        href="/partner-hikvision/"
+                        className="flex items-center gap-3 mx-2 mb-2 px-3 py-2.5 bg-gradient-to-r from-dark-800 to-dark-800/60 border border-dark-700 rounded-lg hover:border-primary-800/60 transition-colors"
+                      >
+                        <Image
+                          src="/images/partners/hikvision-partner-badge.png"
+                          alt="Hikvision — oficjalny partner"
+                          width={90}
+                          height={35}
+                          className="h-7 w-auto"
+                          unoptimized
+                        />
+                        <span className="text-[11px] leading-tight text-dark-300">
+                          <span className="block font-semibold text-white">Oficjalny partner</span>
+                          Hikvision
+                        </span>
+                      </Link>
+                    )}
                     {item.children.map((child) => (
                       <Link
                         key={child.href}
@@ -225,6 +266,27 @@ export function Header() {
                       </div>
                       {mobileDropdown === item.href && (
                         <div className="pb-2 pl-4 space-y-0.5">
+                          {/* Hikvision partner badge inside mobile Monitoring CCTV dropdown */}
+                          {item.href === "/monitoring-cctv/" && (
+                            <Link
+                              href="/partner-hikvision/"
+                              onClick={() => setMobileOpen(false)}
+                              className="flex items-center gap-3 mx-2 mb-2 px-3 py-2.5 bg-dark-800/60 border border-dark-700 rounded-lg"
+                            >
+                              <Image
+                                src="/images/partners/hikvision-partner-badge.png"
+                                alt="Hikvision — oficjalny partner"
+                                width={80}
+                                height={31}
+                                className="h-6 w-auto"
+                                unoptimized
+                              />
+                              <span className="text-[11px] leading-tight text-dark-300">
+                                <span className="block font-semibold text-white">Oficjalny partner</span>
+                                Hikvision
+                              </span>
+                            </Link>
+                          )}
                           {item.children.map((child) => (
                             <Link
                               key={child.href}

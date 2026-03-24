@@ -37,6 +37,7 @@ export const mainNav: NavItem[] = [
     label: "Monitoring CCTV",
     href: "/monitoring-cctv/",
     children: [
+      { label: "Partner Hikvision", href: "/partner-hikvision/" },
       { label: "Monitoring Rzeszów", href: "/monitoring-rzeszow/" },
       { label: "Monitoring Krosno", href: "/monitoring-krosno/" },
       { label: "Monitoring Jasło", href: "/monitoring-jaslo/" },
@@ -74,6 +75,7 @@ export const footerServices: NavItem[] = [
   { label: "Pomiary elektryczne", href: "/pomiary-elektryczne/" },
   { label: "Protokoły elektryczne", href: "/protokoly-elektryczne/" },
   { label: "Monitoring CCTV", href: "/monitoring-cctv/" },
+  { label: "Partner Hikvision", href: "/partner-hikvision/" },
   { label: "Automatyka", href: "/automatyka/" },
   { label: "Smart Home", href: "/smart-home/" },
   { label: "BMS", href: "/bms/" },
@@ -107,6 +109,7 @@ export const footerLocations: NavItem[] = [
 export const footerLinks: NavItem[] = [
   { label: "O firmie", href: "/o-firmie/" },
   { label: "Baza wiedzy", href: "/baza-wiedzy/" },
+  { label: "Aktualności", href: "/aktualnosci/" },
   { label: "Kontakt", href: "/kontakt/" },
   { label: "FAQ", href: "/faq/" },
 ];

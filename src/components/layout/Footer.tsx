@@ -107,6 +107,34 @@ export function Footer() {
         </div>
       </Container>
 
+      {/* Partners strip */}
+      <div className="border-t border-dark-800">
+        <Container className="py-6">
+          <div className="flex flex-col sm:flex-row items-center justify-between gap-4">
+            <span className="text-xs font-medium uppercase tracking-wider text-dark-500">
+              Partnerzy technologiczni
+            </span>
+            <Link
+              href="/partner-hikvision/"
+              className="flex items-center gap-3 px-4 py-2 bg-dark-800/50 border border-dark-700 rounded-lg hover:border-primary-800/50 transition-colors"
+            >
+              <Image
+                src="/images/partners/hikvision-partner-badge.png"
+                alt="Hikvision — oficjalny partner technologiczny CZARKOM"
+                width={100}
+                height={39}
+                className="h-8 w-auto"
+                unoptimized
+              />
+              <span className="text-xs leading-tight text-dark-400">
+                <span className="block font-semibold text-dark-200">Oficjalny partner</span>
+                Systemy monitoringu CCTV
+              </span>
+            </Link>
+          </div>
+        </Container>
+      </div>
+
       {/* Bottom */}
       <div className="border-t border-dark-800">
         <Container className="py-6 flex flex-col sm:flex-row justify-between items-center gap-4">

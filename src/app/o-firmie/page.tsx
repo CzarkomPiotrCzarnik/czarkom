@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import Link from "next/link";
 import { generatePageMetadata } from "@/lib/metadata";
 import { Container } from "@/components/layout/Container";
 import { Breadcrumbs } from "@/components/seo/Breadcrumbs";
@@ -95,6 +96,24 @@ export default function AboutPage() {
                     </div>
                   ))}
                 </div>
+              </div>
+
+              <div>
+                <h2 className="text-2xl font-bold text-white mb-4">
+                  Partnerstwo z Hikvision
+                </h2>
+                <p className="text-dark-300 leading-relaxed mb-4">
+                  W zakresie monitoringu CCTV działamy w ramach partnerstwa z Hikvision
+                  — globalnym liderem systemów monitoringu wizyjnego. Daje nam to dostęp
+                  do profesjonalnego zaplecza technicznego, szkoleń i wsparcia producenta
+                  przy projektowaniu i wdrażaniu systemów kamer.
+                </p>
+                <Link
+                  href="/partner-hikvision/"
+                  className="text-primary-400 hover:text-primary-300 font-medium transition-colors"
+                >
+                  Dowiedz się więcej o partnerstwie →
+                </Link>
               </div>
             </div>
           </div>

@@ -2,6 +2,7 @@ import type { MetadataRoute } from "next";
 import { siteConfig } from "@/data/site";
 import { getAllSlugs } from "@/lib/routes";
 import { knowledgeArticles } from "@/data/knowledge";
+import { newsArticles } from "@/data/news";
 
 export default function sitemap(): MetadataRoute.Sitemap {
   const baseUrl = siteConfig.url;
@@ -12,6 +13,8 @@ export default function sitemap(): MetadataRoute.Sitemap {
     { url: `${baseUrl}/kontakt/`, lastModified: new Date(), changeFrequency: "monthly", priority: 0.8 },
     { url: `${baseUrl}/faq/`, lastModified: new Date(), changeFrequency: "monthly", priority: 0.6 },
     { url: `${baseUrl}/baza-wiedzy/`, lastModified: new Date(), changeFrequency: "weekly", priority: 0.7 },
+    { url: `${baseUrl}/partner-hikvision/`, lastModified: new Date(), changeFrequency: "monthly", priority: 0.9 },
+    { url: `${baseUrl}/aktualnosci/`, lastModified: new Date(), changeFrequency: "weekly", priority: 0.7 },
   ];
 
   const dynamicPages: MetadataRoute.Sitemap = getAllSlugs().map((slug) => ({
@@ -28,5 +31,12 @@ export default function sitemap(): MetadataRoute.Sitemap {
     priority: 0.6,
   }));
 
-  return [...staticPages, ...dynamicPages, ...knowledgePages];
+  const newsPages: MetadataRoute.Sitemap = newsArticles.map((a) => ({
+    url: `${baseUrl}/aktualnosci/${a.slug}/`,
+    lastModified: new Date(),
+    changeFrequency: "monthly" as const,
+    priority: 0.7,
+  }));
+
+  return [...staticPages, ...dynamicPages, ...knowledgePages, ...newsPages];
 }

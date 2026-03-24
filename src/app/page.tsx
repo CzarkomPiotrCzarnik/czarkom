@@ -5,6 +5,7 @@ import { TrustSection } from "@/components/sections/TrustSection";
 import { FaqSection } from "@/components/sections/FaqSection";
 import { CtaSection } from "@/components/sections/CtaSection";
 import { TestimonialsSection } from "@/components/sections/TestimonialsSection";
+import { HikvisionPartnerSection } from "@/components/sections/HikvisionPartnerSection";
 import { Container } from "@/components/layout/Container";
 import { SectionHeading } from "@/components/ui/SectionHeading";
 import { Button } from "@/components/ui/Button";
@@ -156,6 +157,8 @@ export default function HomePage() {
       </section>
 
       <TrustSection />
+
+      <HikvisionPartnerSection />
 
       {/* Area section */}
       <section className="section-padding">
