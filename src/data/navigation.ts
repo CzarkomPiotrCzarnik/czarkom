@@ -64,6 +64,7 @@ export const mainNav: NavItem[] = [
     ],
   },
   { label: "Baza wiedzy", href: "/baza-wiedzy/" },
+  { label: "Aktualności", href: "/aktualnosci/" },
   { label: "FAQ", href: "/faq/" },
   { label: "Kontakt", href: "/kontakt/" },
 ];
