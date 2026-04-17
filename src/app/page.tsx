@@ -18,6 +18,20 @@ export const metadata: Metadata = {
   alternates: {
     canonical: `${siteConfig.url}/`,
   },
+  keywords: [
+    "elektryk Rzeszów",
+    "elektryk Łańcut",
+    "elektryk Krosno",
+    "elektryk Sanok",
+    "elektryk Jasło",
+    "elektryk Dębica",
+    "elektryk Mielec",
+    "elektryk Przemyśl",
+    "instalacje elektryczne",
+    "przeglądy elektryczne",
+    "monitoring CCTV",
+    "kamery CCTV",
+  ],
 };
 
 const mainServices = [
@@ -65,14 +79,31 @@ const mainServices = [
   },
 ];
 
+const priorityLinks = [
+  { label: "Elektryk Rzeszów", href: "/elektryk-rzeszow/" },
+  { label: "Elektryk Łańcut", href: "/elektryk-lancut/" },
+  { label: "Elektryk Krosno", href: "/elektryk-krosno/" },
+  { label: "Elektryk Sanok", href: "/elektryk-sanok/" },
+  { label: "Elektryk Jasło", href: "/elektryk-jaslo/" },
+  { label: "Elektryk Dębica", href: "/elektryk-debica/" },
+  { label: "Elektryk Mielec", href: "/elektryk-mielec/" },
+  { label: "Elektryk Przemyśl", href: "/elektryk-przemysl/" },
+  { label: "Przeglądy Rzeszów", href: "/przeglady-elektryczne-rzeszow/" },
+  { label: "Przeglądy Krosno", href: "/przeglady-elektryczne-krosno/" },
+  { label: "Przeglądy Jasło", href: "/przeglady-elektryczne-jaslo/" },
+  { label: "Monitoring Rzeszów", href: "/monitoring-rzeszow/" },
+  { label: "Monitoring Krosno", href: "/monitoring-krosno/" },
+  { label: "Monitoring Jasło", href: "/monitoring-jaslo/" },
+];
+
 export default function HomePage() {
   return (
     <>
       <JsonLd data={faqSchema(homepageFaq)} />
 
       <HeroSection
-        h1="Elektryk, przeglądy elektryczne, monitoring CCTV i automatyka — Rzeszów, Krosno, Jasło"
-        subtitle="Instalacje NN i SN, pomiary i protokoły, kamery i monitoring, smart home i BMS. Szybki kontakt, lokalny dojazd, pełna dokumentacja."
+        h1="Elektryk, przeglądy elektryczne, monitoring CCTV i automatyka — Podkarpacie"
+        subtitle="Instalacje NN i SN, pomiary i protokoły, kamery i monitoring, smart home i BMS. Działamy w Rzeszowie, Krośnie, Jaśle, Sanoku, Dębicy, Mielcu, Przemyślu, Łańcucie i okolicach."
       />
 
       <ServicesGrid
@@ -165,16 +196,92 @@ export default function HomePage() {
         <Container>
           <SectionHeading
             title="Obszar działania"
-            subtitle="Obsługujemy Rzeszów, Krosno, Jasło i okoliczne miejscowości."
+            subtitle="Obsługujemy najważniejsze miasta Podkarpacia i okoliczne miejscowości."
           />
           <div className="flex flex-wrap justify-center gap-3 mt-8">
             {[
               { city: "Rzeszów", href: "/elektryk-rzeszow" },
+              { city: "Łańcut", href: "/elektryk-lancut" },
               { city: "Krosno", href: "/elektryk-krosno" },
+              { city: "Sanok", href: "/elektryk-sanok" },
               { city: "Jasło", href: "/elektryk-jaslo" },
+              { city: "Dębica", href: "/elektryk-debica" },
+              { city: "Mielec", href: "/elektryk-mielec" },
+              { city: "Przemyśl", href: "/elektryk-przemysl" },
             ].map((item) => (
               <Button key={item.city} href={item.href} variant="secondary" size="sm">
                 📍 {item.city}
+              </Button>
+            ))}
+          </div>
+        </Container>
+      </section>
+
+      <section className="section-padding bg-dark-900/40">
+        <Container>
+          <SectionHeading
+            title="Usługi, których klienci szukają najczęściej"
+            subtitle="Mocne strony docelowe pod zapytania usługowe i lokalne: elektryk, przeglądy, instalacje elektryczne i monitoring CCTV."
+          />
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 mt-12">
+            <div className="rounded-2xl border border-dark-800 bg-dark-900/60 p-8">
+              <h2 className="text-2xl font-bold text-white mb-4">
+                Instalacje elektryczne, pomiary i przeglądy
+              </h2>
+              <p className="text-dark-300 leading-relaxed mb-6">
+                Realizujemy nowe instalacje elektryczne, modernizacje starych
+                instalacji, pomiary ochronne oraz okresowe przeglądy
+                elektryczne. Obsługujemy domy, mieszkania, firmy, wspólnoty i
+                obiekty usługowe z pełną dokumentacją.
+              </p>
+              <div className="flex flex-wrap gap-3">
+                <Button href="/instalacje-elektryczne/" variant="secondary" size="sm">
+                  Instalacje elektryczne
+                </Button>
+                <Button href="/pomiary-elektryczne/" variant="secondary" size="sm">
+                  Pomiary elektryczne
+                </Button>
+                <Button href="/przeglady-elektryczne/" variant="secondary" size="sm">
+                  Przeglądy elektryczne
+                </Button>
+              </div>
+            </div>
+            <div className="rounded-2xl border border-dark-800 bg-dark-900/60 p-8">
+              <h2 className="text-2xl font-bold text-white mb-4">
+                Kamery CCTV, monitoring i zdalny podgląd
+              </h2>
+              <p className="text-dark-300 leading-relaxed mb-6">
+                Projektujemy i montujemy monitoring CCTV dla domów, firm,
+                wspólnot i posesji. Dobieramy kamery, rejestratory i konfigurację
+                sieci, dzięki czemu system działa stabilnie i daje wygodny
+                podgląd z telefonu.
+              </p>
+              <div className="flex flex-wrap gap-3">
+                <Button href="/monitoring-cctv/" variant="secondary" size="sm">
+                  Monitoring CCTV
+                </Button>
+                <Button href="/partner-hikvision/" variant="secondary" size="sm">
+                  Partner Hikvision
+                </Button>
+                <Button href="/sieci-i-internet/" variant="secondary" size="sm">
+                  Sieci i internet
+                </Button>
+              </div>
+            </div>
+          </div>
+        </Container>
+      </section>
+
+      <section className="section-padding">
+        <Container>
+          <SectionHeading
+            title="Popularne wyszukiwania lokalne"
+            subtitle="Skróty do najważniejszych landingów usługowych i miejskich, żeby użytkownik i Google szybciej trafiali do właściwej strony."
+          />
+          <div className="flex flex-wrap justify-center gap-3 mt-10">
+            {priorityLinks.map((item) => (
+              <Button key={item.href} href={item.href} variant="outline" size="sm">
+                {item.label}
               </Button>
             ))}
           </div>

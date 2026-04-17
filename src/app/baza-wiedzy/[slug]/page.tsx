@@ -4,12 +4,13 @@ import Link from "next/link";
 import { knowledgeArticles, getArticleBySlug, getArticlesByCategory } from "@/data/knowledge";
 import { services } from "@/data/services";
 import { generatePageMetadata } from "@/lib/metadata";
-import { faqSchema, breadcrumbSchema } from "@/lib/schema";
+import { articleSchema, faqSchema, breadcrumbSchema } from "@/lib/schema";
 import { Container } from "@/components/layout/Container";
 import { Breadcrumbs } from "@/components/seo/Breadcrumbs";
 import { JsonLd } from "@/components/seo/JsonLd";
 import { CtaSection } from "@/components/sections/CtaSection";
 import { CableColorChart } from "@/components/knowledge/CableColorChart";
+import { siteConfig } from "@/data/site";
 
 interface PageProps {
   params: { slug: string };
@@ -27,6 +28,7 @@ export function generateMetadata({ params }: PageProps): Metadata {
     title: article.metaTitle,
     description: article.metaDescription,
     path: `/baza-wiedzy/${article.slug}`,
+    keywords: [article.category, article.shortTitle, ...(article.relatedServices ?? [])],
   });
 }
 
@@ -56,6 +58,14 @@ export default function KnowledgeArticlePage({ params }: PageProps) {
       {article.faq && article.faq.length > 0 && (
         <JsonLd data={faqSchema(article.faq)} />
       )}
+      <JsonLd
+        data={articleSchema({
+          title: article.title,
+          description: article.metaDescription,
+          url: `${siteConfig.url}/baza-wiedzy/${article.slug}/`,
+          keywords: [article.category, ...article.relatedServices ?? []],
+        })}
+      />
       <JsonLd
         data={breadcrumbSchema([
           { name: "Strona główna", href: "/" },

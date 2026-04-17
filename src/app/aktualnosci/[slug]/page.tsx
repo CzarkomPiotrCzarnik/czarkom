@@ -3,12 +3,13 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { newsArticles, getNewsArticleBySlug } from "@/data/news";
 import { generatePageMetadata } from "@/lib/metadata";
-import { faqSchema, breadcrumbSchema } from "@/lib/schema";
+import { articleSchema, faqSchema, breadcrumbSchema } from "@/lib/schema";
 import { Container } from "@/components/layout/Container";
 import { Breadcrumbs } from "@/components/seo/Breadcrumbs";
 import { JsonLd } from "@/components/seo/JsonLd";
 import { CtaSection } from "@/components/sections/CtaSection";
 import { Button } from "@/components/ui/Button";
+import { siteConfig } from "@/data/site";
 
 interface PageProps {
   params: { slug: string };
@@ -26,6 +27,7 @@ export function generateMetadata({ params }: PageProps): Metadata {
     title: article.metaTitle,
     description: article.metaDescription,
     path: `/aktualnosci/${article.slug}`,
+    keywords: [article.shortTitle, ...(article.relatedLinks?.map((item) => item.label) ?? [])],
   });
 }
 
@@ -43,6 +45,17 @@ export default function NewsArticlePage({ params }: PageProps) {
       {article.faq && article.faq.length > 0 && (
         <JsonLd data={faqSchema(article.faq)} />
       )}
+      <JsonLd
+        data={articleSchema({
+          title: article.title,
+          description: article.metaDescription,
+          url: `${siteConfig.url}/aktualnosci/${article.slug}/`,
+          type: "BlogPosting",
+          datePublished: article.date,
+          dateModified: article.date,
+          keywords: article.relatedLinks?.map((item) => item.label) ?? [],
+        })}
+      />
       <JsonLd
         data={breadcrumbSchema([
           { name: "Strona główna", href: "/" },

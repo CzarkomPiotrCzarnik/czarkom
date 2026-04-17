@@ -15,7 +15,7 @@ const trustItems = [
   {
     icon: "📍",
     title: "Lokalny dojazd",
-    text: "Obsługujemy Rzeszów, Krosno, Jasło i okolice. Szybki dojazd i elastyczne terminy.",
+    text: "Obsługujemy Rzeszów, Krosno, Jasło, Sanok, Dębicę, Mielec, Przemyśl, Łańcut i okoliczne miejscowości. Szybki dojazd i elastyczne terminy.",
   },
   {
     icon: "🛡️",

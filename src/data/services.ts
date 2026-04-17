@@ -651,7 +651,7 @@ export const services: ServiceData[] = [
           "Koszt zależy od zakresu systemu. Podstawowe rozwiązania zaczynają się od kilku tysięcy złotych. Skontaktuj się po indywidualną wycenę.",
       },
     ],
-    relatedServices: ["smart-home", "bms", "sterowanie-oswietleniem"],
+    relatedServices: ["smart-home", "bms", "sieci-i-internet"],
     localPages: [
       "automatyka-rzeszow",
       "automatyka-krosno",
@@ -713,7 +713,7 @@ export const services: ServiceData[] = [
           "Najczęściej zaczynamy od oświetlenia i ogrzewania — to daje najszybsze efekty. Potem można rozbudować o rolety, monitoring i inne elementy.",
       },
     ],
-    relatedServices: ["automatyka", "bms", "sterowanie-ogrzewaniem"],
+    relatedServices: ["automatyka", "bms", "sieci-i-internet"],
     localPages: [],
   },
   {

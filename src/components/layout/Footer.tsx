@@ -32,7 +32,7 @@ export function Footer() {
               />
             </Link>
             <p className="text-dark-400 text-sm leading-relaxed mb-4">
-              Elektryk, przeglądy elektryczne, monitoring CCTV i automatyka. Obsługujemy Rzeszów, Krosno, Jasło i okolice.
+              Elektryk, przeglądy elektryczne, monitoring CCTV i automatyka. Obsługujemy najważniejsze miasta Podkarpacia i okoliczne miejscowości.
             </p>
             <div className="space-y-2 text-sm">
               <a
@@ -142,7 +142,7 @@ export function Footer() {
             &copy; {year} {siteConfig.fullName}. Wszelkie prawa zastrzeżone.
           </p>
           <p className="text-xs text-dark-600">
-            Rzeszów &middot; Krosno &middot; Jasło i okolice
+            Rzeszów &middot; Łańcut &middot; Krosno &middot; Sanok &middot; Jasło &middot; Dębica &middot; Mielec &middot; Przemyśl
           </p>
         </Container>
       </div>

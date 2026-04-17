@@ -20,6 +20,21 @@ interface CityConfig {
   areas: string[];
 }
 
+const cityCases: Record<string, { locative: string; genitive: string }> = {
+  Rzeszów: { locative: "Rzeszowie", genitive: "Rzeszowa" },
+  Krosno: { locative: "Krośnie", genitive: "Krosna" },
+  Jasło: { locative: "Jaśle", genitive: "Jasła" },
+  Sanok: { locative: "Sanoku", genitive: "Sanoka" },
+  Dębica: { locative: "Dębicy", genitive: "Dębicy" },
+  Mielec: { locative: "Mielcu", genitive: "Mielca" },
+  Przemyśl: { locative: "Przemyślu", genitive: "Przemyśla" },
+  Łańcut: { locative: "Łańcucie", genitive: "Łańcuta" },
+};
+
+function getCityCases(city: string) {
+  return cityCases[city] ?? { locative: city, genitive: city };
+}
+
 const cities: CityConfig[] = [
   {
     city: "Rzeszów",
@@ -35,6 +50,18 @@ const cities: CityConfig[] = [
     ],
   },
   {
+    city: "Łańcut",
+    slug: "lancut",
+    areas: [
+      "Łańcut",
+      "Czarna",
+      "Białobrzegi",
+      "Markowa",
+      "Rakszawa",
+      "Leżajsk",
+    ],
+  },
+  {
     city: "Krosno",
     slug: "krosno",
     areas: [
@@ -47,6 +74,18 @@ const cities: CityConfig[] = [
     ],
   },
   {
+    city: "Sanok",
+    slug: "sanok",
+    areas: [
+      "Sanok",
+      "Zagórz",
+      "Lesko",
+      "Brzozów",
+      "Bukowsko",
+      "Ustrzyki Dolne",
+    ],
+  },
+  {
     city: "Jasło",
     slug: "jaslo",
     areas: [
@@ -56,6 +95,42 @@ const cities: CityConfig[] = [
       "Tarnowiec",
       "Nowy Żmigród",
       "Osiek Jasielski",
+    ],
+  },
+  {
+    city: "Dębica",
+    slug: "debica",
+    areas: [
+      "Dębica",
+      "Ropczyce",
+      "Pilzno",
+      "Pustków",
+      "Czarna",
+      "Sędziszów Małopolski",
+    ],
+  },
+  {
+    city: "Mielec",
+    slug: "mielec",
+    areas: [
+      "Mielec",
+      "Przecław",
+      "Radomyśl Wielki",
+      "Tuszów Narodowy",
+      "Borowa",
+      "Połaniec",
+    ],
+  },
+  {
+    city: "Przemyśl",
+    slug: "przemysl",
+    areas: [
+      "Przemyśl",
+      "Żurawica",
+      "Medyka",
+      "Krasiczyn",
+      "Orły",
+      "Dubiecko",
     ],
   },
 ];
@@ -79,155 +154,176 @@ const localServiceConfigs: LocalServiceConfig[] = [
     serviceSlug: "elektryk",
     serviceName: "Elektryk",
     slugPrefix: "elektryk",
-    generateContent: (city) => ({
+    generateContent: (city) => {
+      const { locative, genitive } = getCityCases(city);
+      return {
       metaTitle: `Elektryk ${city} — instalacje elektryczne NN i SN | Czarkom`,
       metaDescription: `Elektryk ${city} — montaż, modernizacja i naprawa instalacji elektrycznych. Instalacje NN i SN. Szybki dojazd. Zadzwoń do Czarkom!`,
       h1: `Elektryk ${city} — instalacje elektryczne`,
-      heroText: `Szukasz sprawdzonego elektryka w ${city === "Rzeszów" ? "Rzeszowie" : city === "Krosno" ? "Krośnie" : "Jaśle"} i okolicach? Czarkom to doświadczony zespół, który wykona instalacje elektryczne solidnie, terminowo i zgodnie z normami.`,
-      introText: `Działamy na terenie ${city === "Rzeszów" ? "Rzeszowa" : city === "Krosno" ? "Krosna" : "Jasła"} i okolic. Wykonujemy instalacje elektryczne w domach, mieszkaniach, firmach i obiektach komercyjnych. Montaż, modernizacja, naprawy — kompleksowo i z dokumentacją.`,
+      heroText: `Szukasz sprawdzonego elektryka w ${locative} i okolicach? Czarkom to doświadczony zespół, który wykona instalacje elektryczne solidnie, terminowo i zgodnie z normami.`,
+      introText: `Działamy na terenie ${genitive} i okolic. Wykonujemy instalacje elektryczne w domach, mieszkaniach, firmach i obiektach komercyjnych. Montaż, modernizacja, naprawy — kompleksowo i z dokumentacją.`,
       localFaq: [
         {
-          question: `Czy dojeżdżacie do ${city === "Rzeszów" ? "Rzeszowa" : city === "Krosno" ? "Krosna" : "Jasła"} i okolic?`,
+          question: `Czy dojeżdżacie do ${genitive} i okolic?`,
           answer: `Tak, obsługujemy ${city} i okoliczne miejscowości. Szybki dojazd i elastyczne terminy.`,
         },
         {
-          question: `Ile kosztuje usługa elektryka w ${city === "Rzeszów" ? "Rzeszowie" : city === "Krosno" ? "Krośnie" : "Jaśle"}?`,
+          question: `Ile kosztuje usługa elektryka w ${locative}?`,
           answer: `Koszt zależy od zakresu prac. Skontaktuj się z nami — przygotujemy indywidualną wycenę. Ceny są konkurencyjne i transparentne.`,
         },
       ],
-    }),
+    };
+    },
   },
   {
     serviceSlug: "przeglady-elektryczne",
     serviceName: "Przeglądy elektryczne",
     slugPrefix: "przeglady-elektryczne",
-    generateContent: (city) => ({
+    generateContent: (city) => {
+      const { locative, genitive } = getCityCases(city);
+      return {
       metaTitle: `Przeglądy elektryczne ${city} — protokoły i dokumentacja | Czarkom`,
       metaDescription: `Przeglądy elektryczne ${city} — pełna dokumentacja, protokoły do ubezpieczenia i odbioru. Domy, mieszkania, firmy. Zadzwoń do Czarkom!`,
       h1: `Przeglądy elektryczne ${city} — dokumentacja i bezpieczeństwo`,
-      heroText: `Wykonujemy przeglądy instalacji elektrycznych w ${city === "Rzeszów" ? "Rzeszowie" : city === "Krosno" ? "Krośnie" : "Jaśle"} i okolicach. Pełna dokumentacja, protokoły zgodne z przepisami, szybki termin realizacji.`,
-      introText: `Przegląd instalacji elektrycznej w ${city === "Rzeszów" ? "Rzeszowie" : city === "Krosno" ? "Krośnie" : "Jaśle"} to nie formalność — to realna ochrona Twojego domu, mieszkania lub firmy. Wykonujemy przeglądy z pełną dokumentacją i jasną komunikacją wyników. Obsługujemy ${city} i najbliższe okolice.`,
+      heroText: `Wykonujemy przeglądy instalacji elektrycznych w ${locative} i okolicach. Pełna dokumentacja, protokoły zgodne z przepisami, szybki termin realizacji.`,
+      introText: `Przegląd instalacji elektrycznej w ${locative} to nie formalność — to realna ochrona Twojego domu, mieszkania lub firmy. Wykonujemy przeglądy z pełną dokumentacją i jasną komunikacją wyników. Obsługujemy ${city} i najbliższe okolice.`,
       localFaq: [
         {
-          question: `Kiedy trzeba wykonać przegląd instalacji elektrycznej w ${city === "Rzeszów" ? "Rzeszowie" : city === "Krosno" ? "Krośnie" : "Jaśle"}?`,
+          question: `Kiedy trzeba wykonać przegląd instalacji elektrycznej w ${locative}?`,
           answer: `Przeglądy instalacji elektrycznych powinny być wykonywane co 5 lat. Wymagane są też przy zmianie właściciela, wynajmie i w sytuacjach ubezpieczeniowych.`,
         },
         {
-          question: `Czy wykonujecie przeglądy w domach i mieszkaniach w ${city === "Rzeszów" ? "Rzeszowie" : city === "Krosno" ? "Krośnie" : "Jaśle"}?`,
-          answer: `Tak — wykonujemy przeglądy w domach jednorodzinnych, mieszkaniach, firmach i budynkach komercyjnych na terenie ${city === "Rzeszów" ? "Rzeszowa" : city === "Krosno" ? "Krosna" : "Jasła"} i okolic.`,
+          question: `Czy wykonujecie przeglądy w domach i mieszkaniach w ${locative}?`,
+          answer: `Tak — wykonujemy przeglądy w domach jednorodzinnych, mieszkaniach, firmach i budynkach komercyjnych na terenie ${genitive} i okolic.`,
         },
         {
-          question: `Ile kosztuje przegląd instalacji elektrycznej w ${city === "Rzeszów" ? "Rzeszowie" : city === "Krosno" ? "Krośnie" : "Jaśle"}?`,
+          question: `Ile kosztuje przegląd instalacji elektrycznej w ${locative}?`,
           answer: `Koszt zależy od wielkości obiektu. Skontaktuj się — podamy cenę po ustaleniu zakresu.`,
         },
       ],
-    }),
+    };
+    },
   },
   {
     serviceSlug: "pomiary-elektryczne",
     serviceName: "Pomiary elektryczne",
     slugPrefix: "pomiary-elektryczne",
-    generateContent: (city) => ({
+    generateContent: (city) => {
+      const { locative } = getCityCases(city);
+      return {
       metaTitle: `Pomiary elektryczne ${city} — protokoły pomiarowe | Czarkom`,
       metaDescription: `Pomiary elektryczne ${city} — rezystancja izolacji, ochrona przeciwporażeniowa, protokoły. Szybka realizacja. Zadzwoń do Czarkom!`,
       h1: `Pomiary elektryczne ${city} — precyzyjna dokumentacja`,
-      heroText: `Wykonujemy pomiary ochronne instalacji elektrycznych w ${city === "Rzeszów" ? "Rzeszowie" : city === "Krosno" ? "Krośnie" : "Jaśle"} i okolicach. Profesjonalny sprzęt, czytelne protokoły, szybka realizacja.`,
-      introText: `Pomiary elektryczne w ${city === "Rzeszów" ? "Rzeszowie" : city === "Krosno" ? "Krośnie" : "Jaśle"} — rezystancja izolacji, skuteczność ochrony przeciwporażeniowej, ciągłość przewodów ochronnych. Wykonujemy pełen zakres pomiarów z dokumentacją.`,
+      heroText: `Wykonujemy pomiary ochronne instalacji elektrycznych w ${locative} i okolicach. Profesjonalny sprzęt, czytelne protokoły, szybka realizacja.`,
+      introText: `Pomiary elektryczne w ${locative} — rezystancja izolacji, skuteczność ochrony przeciwporażeniowej, ciągłość przewodów ochronnych. Wykonujemy pełen zakres pomiarów z dokumentacją.`,
       localFaq: [
         {
-          question: `Jakie pomiary elektryczne wykonujecie w ${city === "Rzeszów" ? "Rzeszowie" : city === "Krosno" ? "Krośnie" : "Jaśle"}?`,
+          question: `Jakie pomiary elektryczne wykonujecie w ${locative}?`,
           answer: `Wykonujemy pełen zakres pomiarów ochronnych: rezystancja izolacji, skuteczność ochrony, ciągłość przewodów, rezystancja uziemienia.`,
         },
         {
-          question: `Czy pomiary i protokół potrzebne są do ubezpieczenia domu w ${city === "Rzeszów" ? "Rzeszowie" : city === "Krosno" ? "Krośnie" : "Jaśle"}?`,
+          question: `Czy pomiary i protokół potrzebne są do ubezpieczenia domu w ${locative}?`,
           answer: `Tak — aktualny protokół pomiarowy może być wymagany przez ubezpieczyciela, szczególnie w razie szkody.`,
         },
       ],
-    }),
+    };
+    },
   },
   {
     serviceSlug: "protokoly-elektryczne",
     serviceName: "Protokoły elektryczne",
     slugPrefix: "protokoly-elektryczne",
-    generateContent: (city) => ({
+    generateContent: (city) => {
+      const { locative } = getCityCases(city);
+      return {
       metaTitle: `Protokoły elektryczne ${city} — dokumentacja pomiarowa | Czarkom`,
       metaDescription: `Protokoły z pomiarów elektrycznych ${city} — do odbioru, ubezpieczenia, wynajmu, sprzedaży. Czytelna dokumentacja. Czarkom.`,
       h1: `Protokoły elektryczne ${city} — dokumentacja na czas`,
-      heroText: `Wystawiamy protokoły z pomiarów elektrycznych w ${city === "Rzeszów" ? "Rzeszowie" : city === "Krosno" ? "Krośnie" : "Jaśle"} i okolicach. Do odbioru, ubezpieczenia, wynajmu — czytelnie i szybko.`,
-      introText: `Potrzebujesz protokołu z pomiarów elektrycznych w ${city === "Rzeszów" ? "Rzeszowie" : city === "Krosno" ? "Krośnie" : "Jaśle"}? Do odbioru budynku, ubezpieczyciela, wynajmu albo sprzedaży? Wykonujemy pomiary i wystawiamy protokoły zgodne z normami.`,
+      heroText: `Wystawiamy protokoły z pomiarów elektrycznych w ${locative} i okolicach. Do odbioru, ubezpieczenia, wynajmu — czytelnie i szybko.`,
+      introText: `Potrzebujesz protokołu z pomiarów elektrycznych w ${locative}? Do odbioru budynku, ubezpieczyciela, wynajmu albo sprzedaży? Wykonujemy pomiary i wystawiamy protokoły zgodne z normami.`,
       localFaq: [
         {
-          question: `Jak szybko otrzymam protokół w ${city === "Rzeszów" ? "Rzeszowie" : city === "Krosno" ? "Krośnie" : "Jaśle"}?`,
+          question: `Jak szybko otrzymam protokół w ${locative}?`,
           answer: `Protokół jest zazwyczaj gotowy w dniu pomiarów lub w ciągu 1-2 dni roboczych.`,
         },
         {
-          question: `Czy protokół jest potrzebny przy sprzedaży domu w ${city === "Rzeszów" ? "Rzeszowie" : city === "Krosno" ? "Krośnie" : "Jaśle"}?`,
+          question: `Czy protokół jest potrzebny przy sprzedaży domu w ${locative}?`,
           answer: `Tak — aktualny protokół z pomiarów to ważny dokument przy sprzedaży nieruchomości.`,
         },
       ],
-    }),
+    };
+    },
   },
   {
     serviceSlug: "monitoring-cctv",
     serviceName: "Monitoring CCTV",
     slugPrefix: "monitoring",
-    generateContent: (city) => ({
+    generateContent: (city) => {
+      const { locative, genitive } = getCityCases(city);
+      return {
       metaTitle: `Monitoring ${city} — montaż kamer CCTV | Czarkom`,
       metaDescription: `Monitoring CCTV ${city} — montaż kamer, rejestratory, podgląd z telefonu. Domy, firmy, posesje. Zadzwoń do Czarkom!`,
       h1: `Monitoring ${city} — kamery CCTV dla domu i firmy`,
-      heroText: `Montujemy systemy monitoringu CCTV w ${city === "Rzeszów" ? "Rzeszowie" : city === "Krosno" ? "Krośnie" : "Jaśle"} i okolicach. Kamery, rejestratory, podgląd z telefonu — profesjonalnie i sprawnie.`,
-      introText: `Monitoring CCTV w ${city === "Rzeszów" ? "Rzeszowie" : city === "Krosno" ? "Krośnie" : "Jaśle"} to skuteczna ochrona domu, firmy i posesji. Montujemy i konfigurujemy systemy kamer z podglądem zdalnym. Dojeżdżamy na teren ${city === "Rzeszów" ? "Rzeszowa" : city === "Krosno" ? "Krosna" : "Jasła"} i okolic.`,
+      heroText: `Montujemy systemy monitoringu CCTV w ${locative} i okolicach. Kamery, rejestratory, podgląd z telefonu — profesjonalnie i sprawnie.`,
+      introText: `Monitoring CCTV w ${locative} to skuteczna ochrona domu, firmy i posesji. Montujemy i konfigurujemy systemy kamer z podglądem zdalnym. Dojeżdżamy na teren ${genitive} i okolic.`,
       localFaq: [
         {
-          question: `Ile kosztuje montaż monitoringu w ${city === "Rzeszów" ? "Rzeszowie" : city === "Krosno" ? "Krośnie" : "Jaśle"}?`,
+          question: `Ile kosztuje montaż monitoringu w ${locative}?`,
           answer: `Koszt zależy od liczby kamer i specyfiki obiektu. Skontaktuj się — przygotujemy wycenę.`,
         },
         {
-          question: `Czy montujecie kamery do domów w ${city === "Rzeszów" ? "Rzeszowie" : city === "Krosno" ? "Krośnie" : "Jaśle"}?`,
-          answer: `Tak — montujemy systemy CCTV dla domów, posesji, firm i obiektów komercyjnych w ${city === "Rzeszów" ? "Rzeszowie" : city === "Krosno" ? "Krośnie" : "Jaśle"} i okolicach.`,
+          question: `Czy montujecie kamery do domów w ${locative}?`,
+          answer: `Tak — montujemy systemy CCTV dla domów, posesji, firm i obiektów komercyjnych w ${locative} i okolicach.`,
         },
       ],
-    }),
+    };
+    },
   },
   {
     serviceSlug: "sieci-i-internet",
     serviceName: "Sieci i internet",
     slugPrefix: "sieci-i-internet",
-    generateContent: (city) => ({
+    generateContent: (city) => {
+      const { locative, genitive } = getCityCases(city);
+      return {
       metaTitle: `Sieci i internet ${city} — Wi-Fi, LAN, diagnostyka | Czarkom`,
-      metaDescription: `Słaby internet w ${city === "Rzeszów" ? "Rzeszowie" : city === "Krosno" ? "Krośnie" : "Jaśle"}? Diagnostyka Wi-Fi, konfiguracja sieci LAN/WLAN, mesh, access pointy. Czarkom — zadzwoń!`,
+      metaDescription: `Słaby internet w ${locative}? Diagnostyka Wi-Fi, konfiguracja sieci LAN/WLAN, mesh, access pointy. Czarkom — zadzwoń!`,
       h1: `Sieci i internet ${city} — diagnostyka, Wi-Fi, LAN`,
-      heroText: `Problemy z internetem lub Wi-Fi w ${city === "Rzeszów" ? "Rzeszowie" : city === "Krosno" ? "Krośnie" : "Jaśle"}? Diagnozujemy, projektujemy i konfigurujemy sieci domowe i firmowe. Dobieramy sprzęt i rozwiązania dopasowane do Twoich potrzeb.`,
-      introText: `Działamy na terenie ${city === "Rzeszów" ? "Rzeszowa" : city === "Krosno" ? "Krosna" : "Jasła"} i okolic. Pomagamy z problemami z internetem — od diagnostyki przez konfigurację routera, po budowę sieci LAN i dobór mesh/access pointów. Pracujemy z domami, mieszkaniami i małymi firmami.`,
+      heroText: `Problemy z internetem lub Wi-Fi w ${locative}? Diagnozujemy, projektujemy i konfigurujemy sieci domowe i firmowe. Dobieramy sprzęt i rozwiązania dopasowane do Twoich potrzeb.`,
+      introText: `Działamy na terenie ${genitive} i okolic. Pomagamy z problemami z internetem — od diagnostyki przez konfigurację routera, po budowę sieci LAN i dobór mesh/access pointów. Pracujemy z domami, mieszkaniami i małymi firmami.`,
       localFaq: [
         {
-          question: `Czy naprawiacie problemy z Wi-Fi w ${city === "Rzeszów" ? "Rzeszowie" : city === "Krosno" ? "Krośnie" : "Jaśle"}?`,
-          answer: `Tak — diagnozujemy przyczyny słabego zasięgu Wi-Fi i dobieramy rozwiązanie: zmiana konfiguracji, mesh, access point lub okablowanie. Dojeżdżamy na teren ${city === "Rzeszów" ? "Rzeszowa" : city === "Krosno" ? "Krosna" : "Jasła"} i okolic.`,
+          question: `Czy naprawiacie problemy z Wi-Fi w ${locative}?`,
+          answer: `Tak — diagnozujemy przyczyny słabego zasięgu Wi-Fi i dobieramy rozwiązanie: zmiana konfiguracji, mesh, access point lub okablowanie. Dojeżdżamy na teren ${genitive} i okolic.`,
         },
         {
-          question: `Ile kosztuje poprawa sieci w domu w ${city === "Rzeszów" ? "Rzeszowie" : city === "Krosno" ? "Krośnie" : "Jaśle"}?`,
+          question: `Ile kosztuje poprawa sieci w domu w ${locative}?`,
           answer: `Koszt zależy od zakresu — od konfiguracji routera po rozbudowę sieci z okablowaniem. Skontaktuj się — przygotujemy wycenę.`,
         },
       ],
-    }),
+    };
+    },
   },
   {
     serviceSlug: "automatyka",
     serviceName: "Automatyka",
     slugPrefix: "automatyka",
-    generateContent: (city) => ({
+    generateContent: (city) => {
+      const { locative } = getCityCases(city);
+      return {
       metaTitle: `Automatyka ${city} — inteligentne sterowanie budynkiem | Czarkom`,
       metaDescription: `Automatyka budynkowa ${city} — sterowanie oświetleniem, ogrzewaniem, integracja systemów. Wygoda i oszczędność. Czarkom.`,
       h1: `Automatyka ${city} — inteligentne rozwiązania`,
-      heroText: `Wdrażamy systemy automatyki budynkowej w ${city === "Rzeszów" ? "Rzeszowie" : city === "Krosno" ? "Krośnie" : "Jaśle"} i okolicach. Sterowanie, integracja, oszczędność energii.`,
-      introText: `Automatyka budynkowa w ${city === "Rzeszów" ? "Rzeszowie" : city === "Krosno" ? "Krośnie" : "Jaśle"} — sterowanie oświetleniem, ogrzewaniem, roletami z aplikacji. Oszczędzasz energię i zyskujesz wygodę. Obsługujemy ${city} i okolice.`,
+      heroText: `Wdrażamy systemy automatyki budynkowej w ${locative} i okolicach. Sterowanie, integracja, oszczędność energii.`,
+      introText: `Automatyka budynkowa w ${locative} — sterowanie oświetleniem, ogrzewaniem, roletami z aplikacji. Oszczędzasz energię i zyskujesz wygodę. Obsługujemy ${city} i okolice.`,
       localFaq: [
         {
-          question: `Czy instalujecie automatykę w istniejących budynkach w ${city === "Rzeszów" ? "Rzeszowie" : city === "Krosno" ? "Krośnie" : "Jaśle"}?`,
+          question: `Czy instalujecie automatykę w istniejących budynkach w ${locative}?`,
           answer: `Tak — wiele rozwiązań automatyki można wdrożyć w istniejących budynkach bez dużych przeróbek.`,
         },
       ],
-    }),
+    };
+    },
   },
 ];
 
