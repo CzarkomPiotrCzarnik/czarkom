@@ -31,7 +31,7 @@ export const metadata: Metadata = {
     template: "%s | Czarkom",
   },
   description: siteConfig.description,
-  keywords: siteConfig.keywords,
+  keywords: [...siteConfig.keywords],
   authors: [{ name: siteConfig.fullName }],
   creator: siteConfig.fullName,
   publisher: siteConfig.fullName,

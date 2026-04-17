@@ -21,7 +21,7 @@ export function generatePageMetadata({
   return {
     title,
     description,
-    keywords: keywords ?? siteConfig.keywords,
+    keywords: keywords ?? [...siteConfig.keywords],
     alternates: {
       canonical: url,
     },
